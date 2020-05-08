@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weatheria</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header><h1>Weatheria</h1></header>
+    <div id="options">
+      <div class="option" id="select-current">
+        <img class="icon" src="images/location-arrow-solid.svg"></img>
+        <div>
+          Get Weather for Current Location
+        </div>
+      </div>
+      <form class="option" id="select-text">
+        <input type="text" list="cities" placeholder="City Name, Country">
+        <datalist id="cities">
+
+        </datalist>
+        <button type="submit">
+          <img class="icon" src="images/search-solid.svg" alt="">
+        </button>
+      </form>
+    </div>
+    <div id="display">
+      <transition name="display-fade-slide" mode="out-in">
+        <div id="response" v-if="dataAvailable" key="resp">
+          <h2>{{response.name + ', ' + response.sys.country}}</h2>
+          <div id="all-weather-blocks">
+            <div v-for="w in response.weather" class="weather-block">
+              <img v-bind:src="'//openweathermap.org/img/wn/' + w.icon + '@2x.png'" alt="">
+              <div>
+              {{w.description}}
+              </div>
+            </div>
+          </div>
+          <h2>{{tempInUnits(response.main.temp)}}</h2>
+          <div id="stats">
+            <div>Feels like:</div>
+            <div>{{tempInUnits(response.main.feels_like)}}</div>
+            <div>Minimum Temp:</div>
+            <div>{{tempInUnits(response.main.temp_min)}}</div>
+            <div>Maximum Temp:</div>
+            <div>{{tempInUnits(response.main.temp_max)}}</div>
+            <div>Pressure:</div>
+            <div>{{response.main.pressure}} hPa</div>
+            <div>Humidity:</div>
+            <div>{{response.main.humidity}}%</div>
+          </div>
+        </div>
+        <div id="loading-container" v-else-if="loading" key="load">
+          <div id="loading-spinner">
+          </div>
+          <div>
+            Fetching weather data...
+          </div>
+        </div>
+        <div v-else key="error">
+          {{errorMessage}}
+        </div>
+      </transition>
+    </div>
+    <footer>
+      Icons provided by <a href="https://fontawesome.com/license/free">Font Awesome</a> under the free license.
+      <br>
+      By Steven Choi <a href="https://github.com/sjc17"><img src="images/github-brands.svg" alt="Github Logo"></a>
+    </footer>
+  </body>  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="script.js"></script>
+</html>
