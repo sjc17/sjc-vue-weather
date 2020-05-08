@@ -54,6 +54,7 @@
             <div>Humidity:</div>
             <div>{{response.main.humidity}}%</div>
           </div>
+          <div id="unit-switch" v-on:click="toggleTempUnits">Show units in {{tempUnits === 'celcius' ? 'Fahrenheit' : 'Celcius'}}</div>
         </div>
         <div id="loading-container" v-else-if="loading" key="load">
           <div id="loading-spinner">

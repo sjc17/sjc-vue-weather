@@ -163,6 +163,27 @@ img.icon {
 #stats > div:nth-child(odd) {
   text-align: end;
 }
+#unit-switch {
+  width: auto;
+  padding: 0px 20px;
+  background-color: ghostwhite;
+  color: black;
+  border: solid 2px gray;
+  border-radius: 15px;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  transition: background-color 0.25s ease-in-out;
+}
+
+#unit-switch:hover {
+  cursor: pointer;
+  background-color: aqua;
+}
+
+#unit-switch:active {
+  transition: background-color 0s;
+  background-color: goldenrod;
+}
 
 /* Loading */
 

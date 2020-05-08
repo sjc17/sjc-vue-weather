@@ -45,6 +45,9 @@ const display = new Vue({
           return '';
       }
     },
+    toggleTempUnits: function () {
+      this.tempUnits = this.tempUnits === 'celcius' ? 'fahrenheit' : 'celcius';
+    },
   },
 });
 
@@ -130,7 +133,7 @@ const getCityWeather = (city) => {
   }
 };
 
-// Populate text autocomplete with
+// Populate text autocomplete with city names
 const populateTextAutocomplete = () => {
   fetch(
     'https://pkgstore.datahub.io/core/world-cities/world-cities_json/data/5b3dd46ad10990bca47b04b4739a02ba/world-cities_json.json'
