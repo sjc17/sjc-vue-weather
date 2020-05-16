@@ -109,8 +109,8 @@ img.icon {
 #display {
   display: flex;
   justify-content: center;
-  padding: 20px;
   min-height: 450px;
+  border-bottom: white 2px solid;
 }
 
 .display-fade-slide-enter,
@@ -218,8 +218,6 @@ img.icon {
 
 footer {
   text-align: center;
-  border-top: solid 2px white;
-  padding: 20px;
 }
 
 footer > a > img {
